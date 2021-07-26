@@ -37,31 +37,12 @@ client.on('message', msg => {
 			if (GetCMD("嗨")) {
 				const event = RemainString(cmd, 1)
 				msg.reply("嗨 " + event + "喵喵喵~~")
-			} else if (GetCMD("MyAvatar")) {
-				const avatar = GetMyAvatar(msg)
-				if (avatar.files) msg.channel.send(`${msg.author}`, avatar);
-			} else if (GetCMD("測試")) {
-				msg.channel.send(helpEmbed);
 			}
 		}
 	} catch (error) {
 		console.log("讀取訊息錯誤。" + error)
 	}
 });
-
-//獲取頭像
-function GetMyAvatar(msg) {
-	try {
-		return {
-			files: [{
-				attachment: msg.author.displayAvatarURL(),
-				name: 'avatar.jpg'
-			}]
-		}
-	} catch (error) {
-		console.log("獲取頭項出現錯誤。")
-	}
-}
 
 //讀取指令要執行的動作
 function RemainString(cmd, index) {
@@ -72,11 +53,3 @@ function RemainString(cmd, index) {
 		return cmd[1]
 	}
 }
-
-//嵌入訊息
-const helpEmbed = new Index.MessageEmbed()
-	.setColor('#ff7aad')
-	.addField('貓貓布丁使用手冊', '開頭打上"喵喵!"以使用指令。')
-	.addField('嗨+XXX', '貓貓布丁會跟XXX打招呼。', true)
-	.setTimestamp()
-	.setFooter('最後更新時間');

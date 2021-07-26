@@ -1,5 +1,6 @@
+require('dotenv').config()
 const Index = require('discord.js');
-const {token} = require('./token.json');
+const token = process.env["DCTOKEN"];
 const client = new Index.Client();
 
 client.login(token);

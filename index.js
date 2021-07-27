@@ -58,9 +58,23 @@ client.on('message', msg => {
 					const embed = new Index.MessageEmbed()
 						.setColor('#ff7aad')
 						.setTitle(`嘿！你！${msg.guild.member(msg.mentions.users.first()).displayName}！你壞透了！`)
-						.setDescription(`<@${msg.mentions.users.first().id}>貓貓不知道你做了甚麼，但你讓<@${msg.author.id}>很生氣，所以你很壞。`)
+						.setDescription(`<@${msg.mentions.users.first().id}> 貓貓不知道你做了甚麼，但你讓 <@${msg.author.id}> 很生氣，所以你很壞。`)
 						.setThumbnail(msg.mentions.users.first().avatarURL())
 						.setFooter(`貓貓希望你反省，別再這樣了`)
+					console.log(cmd)
+					if (cmd.length > 2) {
+						if (cmd[2] !== `<@!${msg.mentions.users.first().id}>`) {
+							const str = cmd[2]===''?cmd[3]:cmd[2]
+							embed.setDescription(`<@${msg.mentions.users.first().id}> 因為你${str}，讓 <@${msg.author.id}> 很生氣，所以你很壞。`)
+						}
+						else {
+							embed.setDescription(`<@${msg.mentions.users.first().id}> 因為你${cmd[1]}，讓 <@${msg.author.id}> 很生氣，所以你很壞。`)
+						}
+					}
+					if (cmd[0] !== "壞") {
+						const event = RemainString(cmd, 1)
+						embed.setDescription(`<@${msg.mentions.users.first().id}> 因為你${event}，讓 <@${msg.author.id}> 很生氣，所以你很壞。`)
+					}
 					msg.channel.send(embed)
 				}
 			}

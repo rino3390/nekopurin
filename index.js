@@ -51,7 +51,10 @@ client.on('message', msg => {
 				msg.reply("嗨 " + event + "喵喵喵~~")
 			}
 			else if (GetCMD("壞")) {
-				if(msg.mentions.users.first().id === msg.author.id){
+				if(msg.mentions.users.first() === undefined){
+					msg.reply("誰壞壞你要講啊？")
+				}
+				else if (msg.mentions.users.first().id === msg.author.id) {
 					msg.reply("你不可以說自己壞壞，懂嗎？")
 				}
 				else {
@@ -61,7 +64,6 @@ client.on('message', msg => {
 						.setDescription(`<@${msg.mentions.users.first().id}> 貓貓不知道你做了甚麼，但你讓 <@${msg.author.id}> 很生氣，所以你很壞。`)
 						.setThumbnail(msg.mentions.users.first().avatarURL())
 						.setFooter(`貓貓希望你反省，別再這樣了`)
-					console.log(cmd)
 					if (cmd.length > 2) {
 						if (cmd[2] !== `<@!${msg.mentions.users.first().id}>`) {
 							const str = cmd[2]===''?cmd[3]:cmd[2]
@@ -76,6 +78,14 @@ client.on('message', msg => {
 						embed.setDescription(`<@${msg.mentions.users.first().id}> 因為你${event}，讓 <@${msg.author.id}> 很生氣，所以你很壞。`)
 					}
 					msg.channel.send(embed)
+				}
+			}
+			else if(GetCMD("\\?")){
+				if(msg.mentions.users.first() === undefined){
+					msg.channel.send({files: ["https://i.imgur.com/cgZbwOI.jpg"]});
+				}
+				else {
+					msg.channel.send(`<@${msg.mentions.users.first().id}>`, {files: ["https://i.imgur.com/cgZbwOI.jpg"]});
 				}
 			}
 		}

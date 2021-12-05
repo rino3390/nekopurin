@@ -94,6 +94,11 @@ client.on('message', msg => {
 	}
 });
 
+client.on('messageReactionAdd', (reaction, user) => {
+	const member = reaction.message.guild.members.cache.get(user.id);
+	console.log(reaction);
+});
+K
 //讀取指令要執行的動作
 function RemainString(cmd, index) {
 	//如果切出來的字串長度不等於指令 == 指令和行為沒用空格隔開

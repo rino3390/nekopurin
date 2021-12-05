@@ -94,11 +94,30 @@ client.on('message', msg => {
 	}
 });
 
+//新增反應
 client.on('messageReactionAdd', (reaction, user) => {
 	const member = reaction.message.guild.members.cache.get(user.id);
-	console.log(reaction);
+	if (reaction.message.id === '917169042408751165') {
+		switch (reaction.emoji.name) {
+			case '☑️':
+				member.roles.add('916747674198343741')
+				break;
+		}
+	}
 });
-K
+
+//移除反應
+client.on('messageReactionRemove', (reaction, user) => {
+	const member = reaction.message.guild.members.cache.get(user.id);
+	if (reaction.message.id === '917169042408751165') {
+		switch (reaction.emoji.name) {
+			case '☑️':
+				member.roles.add('916747674198343741')
+				break;
+		}
+	}
+});
+
 //讀取指令要執行的動作
 function RemainString(cmd, index) {
 	//如果切出來的字串長度不等於指令 == 指令和行為沒用空格隔開

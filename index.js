@@ -4,6 +4,7 @@ const token = process.env["DCTOKEN"];
 const client = new Index.Client();
 var express = require('express');
 var app     = express();
+const drinkOrgID = process.env["drinkOrgID"];
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -97,7 +98,7 @@ client.on('message', msg => {
 //新增反應
 client.on('messageReactionAdd', (reaction, user) => {
 	const member = reaction.message.guild.members.cache.get(user.id);
-	if (reaction.message.id === '917169042408751165') {
+	if (reaction.message.id === drinkOrgID) {
 		switch (reaction.emoji.name) {
 			case '☑️':
 				member.roles.add('916747674198343741')
@@ -109,7 +110,7 @@ client.on('messageReactionAdd', (reaction, user) => {
 //移除反應
 client.on('messageReactionRemove', (reaction, user) => {
 	const member = reaction.message.guild.members.cache.get(user.id);
-	if (reaction.message.id === '917169042408751165') {
+	if (reaction.message.id === drinkOrgID) {
 		switch (reaction.emoji.name) {
 			case '☑️':
 				member.roles.add('916747674198343741')

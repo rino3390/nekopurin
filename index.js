@@ -1,7 +1,7 @@
 require('dotenv').config()
-const Index = require('discord.js');
+const Discord = require('discord.js');
 const token = process.env["DCTOKEN"];
-const client = new Index.Client();
+const client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
 var express = require('express');
 var app     = express();
 const drinkOrgID = process.env["drinkOrgID"];
@@ -95,10 +95,11 @@ client.on('message', msg => {
 	}
 });
 
+
 //新增反應
 client.on('messageReactionAdd', (reaction, user) => {
 	const member = reaction.message.guild.members.cache.get(user.id);
-	if (reaction.message.id === drinkOrgID) {
+	if (reaction.message.id === '917177254025523212') {
 		switch (reaction.emoji.name) {
 			case '☑️':
 				member.roles.add('916747674198343741')
@@ -110,10 +111,10 @@ client.on('messageReactionAdd', (reaction, user) => {
 //移除反應
 client.on('messageReactionRemove', (reaction, user) => {
 	const member = reaction.message.guild.members.cache.get(user.id);
-	if (reaction.message.id === drinkOrgID) {
+	if (reaction.message.id === '917177254025523212') {
 		switch (reaction.emoji.name) {
 			case '☑️':
-				member.roles.add('916747674198343741')
+				member.roles.remove('916747674198343741')
 				break;
 		}
 	}

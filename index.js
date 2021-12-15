@@ -106,6 +106,25 @@ client.on('messageReactionAdd', (reaction, user) => {
 				break;
 		}
 	}
+	else if(reaction.message.id === '920539629948657715'){
+		switch (reaction.emoji.name) {
+			case '🎮':
+				member.roles.add('920539969305579571')
+				break;
+			case '0️⃣':
+				member.roles.add('916749086810574868')
+				break;
+			case '1️⃣':
+				member.roles.add('916750893410566155')
+				break;
+			case '2️⃣':
+				member.roles.add('916779994674499594')
+				break;
+			case '3️⃣':
+				member.roles.add('916779688150581279')
+				break;
+		}
+	}
 });
 
 //移除反應
@@ -115,6 +134,25 @@ client.on('messageReactionRemove', (reaction, user) => {
 		switch (reaction.emoji.name) {
 			case '☑️':
 				member.roles.remove('916747674198343741')
+				break;
+		}
+	}
+	else if(reaction.message.id === '920539629948657715'){
+		switch (reaction.emoji.name) {
+			case '🎮':
+				member.roles.remove('920539969305579571')
+				break;
+			case '0️⃣':
+				member.roles.remove('916749086810574868')
+				break;
+			case '1️⃣':
+				member.roles.remove('916750893410566155')
+				break;
+			case '2️⃣':
+				member.roles.remove('916779994674499594')
+				break;
+			case '3️⃣':
+				member.roles.remove('916779688150581279')
 				break;
 		}
 	}

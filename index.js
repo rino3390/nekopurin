@@ -52,6 +52,7 @@ client.on('message', msg => {
 				msg.reply("嗨 " + event + "喵喵喵~~")
 			}
 			else if (GetCMD("壞")) {
+
 				if(msg.mentions.users.first() === undefined){
 					msg.reply("誰壞壞你要講啊？")
 				}
@@ -59,7 +60,7 @@ client.on('message', msg => {
 					msg.reply("你不可以說自己壞壞，懂嗎？")
 				}
 				else {
-					const embed = new Index.MessageEmbed()
+					const embed = new Discord.MessageEmbed()
 						.setColor('#ff7aad')
 						.setTitle(`嘿！你！${msg.guild.member(msg.mentions.users.first()).displayName}！你壞透了！`)
 						.setDescription(`<@${msg.mentions.users.first().id}> 貓貓不知道你做了甚麼，但你讓 <@${msg.author.id}> 很生氣，所以你很壞。`)

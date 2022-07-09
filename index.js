@@ -1,9 +1,9 @@
 require('dotenv').config()
-const Discord = require('discord.js');
+import Discord from 'discord.js';
 const token = process.env["DCTOKEN"];
 const client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
-var express = require('express');
-var app     = express();
+const express = require('express');
+const app = express();
 const drinkOrgID = process.env["drinkOrgID"];
 
 app.set('port', (process.env.PORT || 5000));
